@@ -1,7 +1,7 @@
 [
 null,
 {"id":1,"animation1Hue":0,"animation1Name":"Hit1","animation2Hue":0,"animation2Name":"","frames":[[[0,0,0,100,0,0,255,1]],[[1,0,0,100,0,0,255,1]],[[2,0,0,100,0,0,255,1]],[[3,0,0,100,0,0,255,1]],[[3,0,0,100,0,0,155,1]],[[3,0,0,100,0,0,55,1]]],"name":"Strike","position":1,"timings":[{"flashColor":[255,255,255,255],"flashDuration":3,"flashScope":1,"frame":0,"se":{"name":"Blow3","pan":0,"pitch":100,"volume":90}}]},
-{"id":2,"animation1Hue":0,"animation1Name":"","animation2Hue":0,"animation2Name":"","frames":[[]],"name":"","position":1,"timings":[]},
+{"id":2,"animation1Hue":32,"animation1Name":"SlashIce","animation2Hue":0,"animation2Name":"","frames":[[[0,0,0,100,0,0,255,1]],[[1,0,0,100,0,0,255,1]],[[2,0,0,100,0,0,255,1]],[[3,0,0,100,0,0,255,1]],[[4,0,0,100,0,0,255,1]],[[5,0,0,100,0,0,255,1]],[[5,0,0,100,0,0,100,1]]],"name":"Slash","position":1,"timings":[{"flashColor":[255,255,255,255],"flashDuration":3,"flashScope":1,"frame":0,"se":null}]},
 {"id":3,"animation1Hue":0,"animation1Name":"","animation2Hue":0,"animation2Name":"","frames":[[]],"name":"","position":1,"timings":[]},
 {"id":4,"animation1Hue":0,"animation1Name":"","animation2Hue":0,"animation2Name":"","frames":[[]],"name":"","position":1,"timings":[]},
 {"id":5,"animation1Hue":0,"animation1Name":"","animation2Hue":0,"animation2Name":"","frames":[[]],"name":"","position":1,"timings":[]},
