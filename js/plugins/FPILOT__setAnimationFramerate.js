@@ -20,6 +20,7 @@
   const fps = numberBoundaries(_fps, 10, 60);
 
   Sprite_Animation.prototype.setupRate = function () {
+    console.log(Math.ceil(60 / fps));
     this._rate = Math.ceil(60 / fps);
   };
 })();
