@@ -17,8 +17,6 @@
   const pluginName = 'SetAnimationFramerate';
   const parameters = PluginManager.parameters(pluginName);
   const fps = Number(parameters.FPS || 15);
-  console.log(parameters);
-  console.log(fps);
 
   Sprite_Animation.prototype.setupRate = function () {
     this._rate = Math.ceil(60 / fps);
