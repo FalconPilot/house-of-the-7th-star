@@ -11,9 +11,6 @@
 */
 
 (function() {
-
-  // Return a number comprised between 'min' and 'max' params
-
   const pluginName = 'SetAnimationFramerate';
   const parameters = PluginManager.parameters(pluginName);
   const fps = Number(parameters.FPS || 15);
