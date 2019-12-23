@@ -163,10 +163,13 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   const valueX = rect.width - valueSize - (interactive ? iconSize : 0);
 
   this.resetTextColor();
+  this.changePaintOpacity(255);
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
   this.drawText(param, valueX, rect.y, valueSize, 'center');
   if (this._interactive) {
+    this.changePaintOpacity(100);
     this.drawIcon(16, rect.width - iconSize, rect.y);
+    this.changePaintOpacity(255);
     this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
   }
 };
