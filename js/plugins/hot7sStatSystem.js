@@ -103,6 +103,18 @@ Window_FP_Stats.prototype.refresh = function () {
   Window_Selectable.prototype.refresh.call(this);
 };
 
+Window_Command.prototype.commandName = function(index) {
+  return this._list[index].name;
+};
+
+Window_FP_Stats.prototype.drawItem = function (index) {
+  var rect = this.itemRectForText(index);
+  var align = this.itemTextAlign();
+  this.resetTextColor();
+  this.changePaintOpacity(this.isCommandEnabled(index));
+  this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
+};
+
 // StatsMenu Scene
 
 function Scene_FP_StatsMenu () {
