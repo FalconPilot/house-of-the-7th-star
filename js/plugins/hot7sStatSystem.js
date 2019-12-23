@@ -109,13 +109,7 @@ Window_FP_Stats.prototype.refresh = function () {
   console.log('Refreshing !');
 };
 
-Window_FP_Stats.prototype.selectWidth = function () {
-  return Math.max(this._list.map(function (item, index) {
-    return this.itemRectForText(index).width;
-  }));
-};
-
-Window_Selectable.prototype.itemWidth = function() {
+Window_FP_Stats.prototype.itemWidth = function() {
   const max = Math.max(this._list.map(function (item, index) {
     return this.itemRectForText(index).width;
   }));
