@@ -141,7 +141,7 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   const param = this._actor.paramBase(paramId);
   this.resetTextColor();
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
-  this.drawText(param, rect.width - valueSize, rect.y, valueSize, align);
+  this.drawText(param, rect.width - valueSize, rect.y, valueSize, 'right');
 };
 
 Window_FP_Stats.prototype.itemTextAlign = function () {
