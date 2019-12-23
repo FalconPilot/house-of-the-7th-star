@@ -80,10 +80,11 @@ Window_FP_Stats.prototype.clearCommandList = function () {
 };
 
 Window_FP_Stats.prototype.makeCommandList = function () {
-  const addCommand = this.addCommand;
-  this._actor.getAdvanceable().forEach(function (id) {
-    addCommand(TextManager.param(id), 'advance_' + id);
-  });
+  const advanceable = this._actor.getAdvanceable();
+  for (var i = 0; i < advanceable.length; i++) {
+    const id = advanceable[i];
+    this.addCommand(TextManager.param(id), 'advance_' + id);
+  }
 };
 
 Window_FP_Stats.prototype.addCommand = function(name, symbol, enabled = true, ext = undefined) {
