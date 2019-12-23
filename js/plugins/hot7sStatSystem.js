@@ -110,7 +110,7 @@ Window_FP_Stats.prototype.refresh = function () {
 };
 
 Window_FP_Stats.prototype.selectWidth = function () {
-  return 200;
+  return 300;
 };
 
 Window_FP_Stats.prototype.itemWidth = function() {
@@ -129,11 +129,19 @@ Window_FP_Stats.prototype.numVisibleRows = function() {
   return Math.ceil(this.maxItems() / this.maxCols());
 };
 
+Window_FP_Stats.prototype.statValueSize = function () {
+  return 30;
+};
+
 Window_FP_Stats.prototype.drawItem = function (index) {
-  var rect = this.itemRectForText(index);
-  var align = this.itemTextAlign();
+  const rect = this.itemRectForText(index);
+  const align = this.itemTextAlign();
+  const valueSize = this.statValueSize();
+  const paramId = this._actor.getAdvanceable()[index];
+  const param = this._actor.paramBase(paramId);
   this.resetTextColor();
-  this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
+  this.drawText(this.commandName(index), rect.x + valueSize, rect.y, rect.width, align);
+  this.drawText(param, rect.x, rect.y, valueSize, align);
 };
 
 Window_FP_Stats.prototype.itemTextAlign = function () {
