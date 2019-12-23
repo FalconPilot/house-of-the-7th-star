@@ -40,7 +40,7 @@ Game_Actor.prototype.advancesTaken = function () {
 };
 
 Game_Actor.prototype.availableAdvances = function () {
-  return Math.floor(this._level / ) * 5;
+  return Math.floor(this._level / 2) * 5;
 };
 
 Game_Actor.prototype.setup = function(actorId) {
