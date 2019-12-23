@@ -109,7 +109,7 @@ Scene_FP_StatsMenu.prototype.constructor = Scene_FP_StatsMenu;
 
 Scene_FP_StatsMenu.prototype.initialize = function () {
   Scene_MenuBase.prototype.initialize.call(this);
-  console.log(this._actor);
+  console.log($gameParty.menuActor());
 };
 
 Scene_FP_StatsMenu.prototype.create = function () {
