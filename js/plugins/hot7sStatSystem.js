@@ -68,7 +68,7 @@ Window_FP_Stats.prototype.initialize = function (x, y, actor) {
 };
 
 Window_FP_Stats.prototype.windowWidth = function () {
-  return 300;
+  return Graphics.boxWidth;
 };
 
 Window_FP_Stats.prototype.windowHeight = function () {
@@ -93,7 +93,7 @@ Window_FP_Stats.prototype.addCommand = function(name, symbol, enabled = true, ex
     symbol: symbol,
     enabled: enabled,
     ext: ext
-  })
+  });
 };
 
 Window_FP_Stats.prototype.refresh = function () {
@@ -101,7 +101,10 @@ Window_FP_Stats.prototype.refresh = function () {
   this.makeCommandList();
   this.createContents();
   Window_Selectable.prototype.refresh.call(this);
-  this.drawAllItems();
+};
+
+Window_FP_Stats.prototype.isCommandEnabled = function (index) {
+  return this._list[index].enabled;
 };
 
 Window_FP_Stats.prototype.commandName = function(index) {
