@@ -55,16 +55,19 @@ function Window_FP_Stats () {
 Window_FP_Stats.prototype = Object.create(Window_Selectable.prototype);
 Window_FP_Stats.prototype.constructor = Window_FP_Stats;
 
-Window_FP_Stats.prototype.initialize = function (x, y, actor) {
+Window_FP_Stats.prototype.initialize = function (actor) {
   this._actor = actor;
   this.clearCommandList();
   this.makeCommandList();
   const width = this.windowWidth();
   const height = this.windowHeight();
+  const x = 0;
+  const y = 0;
   Window_Selectable.prototype.initialize.call(this, x, y, width, height);
   this.refresh();
   this.select(0);
   this.activate();
+  console.log(this._list);
 };
 
 Window_FP_Stats.prototype.windowWidth = function () {
@@ -146,6 +149,6 @@ Scene_FP_StatsMenu.prototype.start = function () {
 };
 
 Scene_FP_StatsMenu.prototype.createStatWindow = function () {
-  this._statWindow = new Window_FP_Stats(0, 0, this.actor());
+  this._statWindow = new Window_FP_Stats(this.actor());
   this.addWindow(this._statWindow);
 };
