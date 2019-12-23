@@ -80,8 +80,9 @@ Window_FP_Stats.prototype.clearCommandList = function () {
 };
 
 Window_FP_Stats.prototype.makeCommandList = function () {
+  const addCommand = this.addCommand;
   this._actor.getAdvanceable().forEach(function (id) {
-    this.addCommand(TextManager.param(id), 'advance_' + id);
+    addCommand(TextManager.param(id), 'advance_' + id);
   });
 };
 
