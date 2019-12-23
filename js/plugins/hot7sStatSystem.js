@@ -110,11 +110,11 @@ Window_FP_Stats.prototype.refresh = function () {
 };
 
 Window_FP_Stats.prototype.itemWidth = function() {
-  const parent = this;
-  const max = Math.max(this._list.map(function (item, index) {
-    return parent.itemRectForText(index).width;
-  }));
-  return max + this.padding * 2;
+  const itemsWidth = [];
+  for (var i = 0; i < this._list.length; i++) {
+    itemsWidth.push(this.itemRectForText(index).width);
+  }
+  return Math.max(itemsWidth); + this.padding * 2;
 };
 
 Window_FP_Stats.prototype.commandName = function (index) {
