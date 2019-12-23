@@ -79,7 +79,16 @@ Window_FP_Stats.prototype.clearCommandList = function () {
 };
 
 Window_FP_Stats.prototype.makeCommandList = function () {
-  
+  this.addCommand('Foo bar', 'foobar');
+};
+
+Window_FP_Stats.prototype.addCommand = function(name, symbol, enabled = true, ext = undefined) {
+  this._list.push({
+    name: name,
+    symbol: symbol,
+    enabled: enabled,
+    ext: ext
+  })
 };
 
 Window_FP_Stats.prototype.refresh = function () {
@@ -100,6 +109,7 @@ Scene_FP_StatsMenu.prototype.constructor = Scene_FP_StatsMenu;
 
 Scene_FP_StatsMenu.prototype.initialize = function () {
   Scene_MenuBase.prototype.initialize.call(this);
+  console.log(this._actor);
 };
 
 Scene_FP_StatsMenu.prototype.create = function () {
