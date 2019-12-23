@@ -101,9 +101,10 @@ Window_FP_Stats.prototype.refresh = function () {
   this.makeCommandList();
   this.createContents();
   Window_Selectable.prototype.refresh.call(this);
+  this.drawAllItems();
 };
 
-Window_Command.prototype.commandName = function(index) {
+Window_FP_Stats.prototype.commandName = function(index) {
   return this._list[index].name;
 };
 
