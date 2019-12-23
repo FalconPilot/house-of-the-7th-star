@@ -109,12 +109,12 @@ Window_FP_Stats.prototype.refresh = function () {
   console.log('Refreshing !');
 };
 
+Window_FP_Stats.prototype.selectWidth = function () {
+  return 200;
+};
+
 Window_FP_Stats.prototype.itemWidth = function() {
-  const itemsWidth = [];
-  for (var i = 0; i < this._list.length; i++) {
-    itemsWidth.push(this.itemRectForText(i).width);
-  }
-  return Math.max(itemsWidth); + this.padding * 2;
+  return this.selectWidth() + this.padding * 2;
 };
 
 Window_FP_Stats.prototype.commandName = function (index) {
