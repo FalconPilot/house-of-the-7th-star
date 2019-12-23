@@ -13,8 +13,22 @@ Window_FP_Stats.prototype = Object.create(Window_Base.prototype);
 Window_FP_Stats.prototype.constructor = Window_FP_Stats;
 
 Window_FP_Stats.prototype.initialize = function (x, y) {
-  Window_Base.prototype.initialize.call(this, x, y, 300, 400);
+  const width = this.windowWidth();
+  const height = this.windowHeight();
+  Window_Base.prototype.initialize.call(this, x, y, width, height);
   this.refresh();
+};
+
+Window_FP_Stats.prototype.windowWidth = function () {
+  return 300;
+};
+
+Window_FP_Stats.prototype.windowHeight = function () {
+  return this.fittingHeight(10);
+};
+
+Window_FP_Stats.prototype.refresh = function () {
+  console.log('TODO');
 };
 
 // StatsMenu Scene
