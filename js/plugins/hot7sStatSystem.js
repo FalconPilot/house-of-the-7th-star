@@ -112,7 +112,7 @@ Window_FP_Stats.prototype.refresh = function () {
 Window_FP_Stats.prototype.itemWidth = function() {
   const itemsWidth = [];
   for (var i = 0; i < this._list.length; i++) {
-    itemsWidth.push(this.itemRectForText(index).width);
+    itemsWidth.push(this.itemRectForText(i).width);
   }
   return Math.max(itemsWidth); + this.padding * 2;
 };
