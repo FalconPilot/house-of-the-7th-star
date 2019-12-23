@@ -86,7 +86,7 @@ Window_FP_Stats.prototype.initialize = function (actor, interactive = false) {
 };
 
 Window_FP_Stats.prototype.isInteractive = function () {
-
+  return this._interactive;
 };
 
 Window_FP_Stats.prototype.horizontalPadding = function () {
@@ -153,18 +153,22 @@ Window_FP_Stats.prototype.statValueSize = function () {
 };
 
 Window_FP_Stats.prototype.drawItem = function (index) {
+  const interactive = this.isInteractive()
   const rect = this.itemRectForText(index);
   const align = this.itemTextAlign();
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
   const param = this._actor.paramBase(paramId);
   const iconSize = 32;
+  const valueX = rect.width - valueSize - (interactive ? iconSize : 0);
 
   this.resetTextColor();
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
-  this.drawText(param, rect.width - valueSize - iconSize, rect.y, valueSize, 'center');
-  this.drawIcon(16, rect.width, rect.y);
-  this.drawIcon(17, rect.width - valueSize - iconSize, rect.y);
+  this.drawText(param, valueX, rect.y, valueSize, 'center');
+  if (this._interactive) {
+    this.drawIcon(16, rect.width, rect.y);
+    this.drawIcon(17, rect.width - valueSize - iconSize, rect.y);
+  }
 };
 
 Window_FP_Stats.prototype.itemTextAlign = function () {
