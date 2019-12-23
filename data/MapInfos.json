@@ -1,7 +1,7 @@
 [
 null,
 {"id":1,"expanded":true,"name":"Intro_INIT","order":1,"parentId":0,"scrollX":539,"scrollY":305},
-{"id":2,"expanded":false,"name":"Draconis_Throne","order":3,"parentId":3,"scrollX":832,"scrollY":640},
+{"id":2,"expanded":false,"name":"Draconis_Throne","order":3,"parentId":3,"scrollX":531,"scrollY":305},
 {"id":3,"expanded":true,"name":"Draconis_Stronghold","order":2,"parentId":0,"scrollX":531,"scrollY":305},
 {"id":4,"expanded":false,"name":"Draconis_Recruitroom","order":4,"parentId":3,"scrollX":539,"scrollY":305}
 ]
