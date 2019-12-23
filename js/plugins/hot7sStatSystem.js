@@ -55,7 +55,8 @@ function Window_FP_Stats () {
 Window_FP_Stats.prototype = Object.create(Window_Selectable.prototype);
 Window_FP_Stats.prototype.constructor = Window_FP_Stats;
 
-Window_FP_Stats.prototype.initialize = function (x, y) {
+Window_FP_Stats.prototype.initialize = function (x, y, actor) {
+  this._actor = actor;
   this.clearCommandList();
   this.makeCommandList();
   const width = this.windowWidth();
@@ -71,7 +72,7 @@ Window_FP_Stats.prototype.windowWidth = function () {
 };
 
 Window_FP_Stats.prototype.windowHeight = function () {
-  return this.fittingHeight(10);
+  return this.fittingHeight(this._actor.getAdvanceable().length);
 };
 
 Window_FP_Stats.prototype.clearCommandList = function () {
@@ -79,7 +80,9 @@ Window_FP_Stats.prototype.clearCommandList = function () {
 };
 
 Window_FP_Stats.prototype.makeCommandList = function () {
-  this.addCommand('Foo bar', 'foobar');
+  this._actor.getAdvanceable().forEach(function (id) {
+    this.addCommand(TextManager.param(id), 'advance_' + id);
+  });
 };
 
 Window_FP_Stats.prototype.addCommand = function(name, symbol, enabled = true, ext = undefined) {
@@ -109,7 +112,10 @@ Scene_FP_StatsMenu.prototype.constructor = Scene_FP_StatsMenu;
 
 Scene_FP_StatsMenu.prototype.initialize = function () {
   Scene_MenuBase.prototype.initialize.call(this);
-  console.log($gameParty.menuActor());
+};
+
+Scene_FP_StatsMenu.prototype.actor = function () {
+  return $gameParty.menuActor();
 };
 
 Scene_FP_StatsMenu.prototype.create = function () {
@@ -122,6 +128,6 @@ Scene_FP_StatsMenu.prototype.start = function () {
 };
 
 Scene_FP_StatsMenu.prototype.createStatWindow = function () {
-  this._statWindow = new Window_FP_Stats(0, 0);
+  this._statWindow = new Window_FP_Stats(0, 0, this.actor());
   this.addWindow(this._statWindow);
 };
