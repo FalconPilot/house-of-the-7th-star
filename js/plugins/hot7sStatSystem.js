@@ -110,8 +110,9 @@ Window_FP_Stats.prototype.refresh = function () {
 };
 
 Window_FP_Stats.prototype.itemWidth = function() {
-  const max = Math.max(this._list.map((item, index) => {
-    return this.itemRectForText(index).width;
+  const parent = this;
+  const max = Math.max(this._list.map(function (item, index) {
+    return parent.itemRectForText(index).width;
   }));
   return max + this.padding * 2;
 };
