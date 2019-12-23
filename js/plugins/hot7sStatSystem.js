@@ -97,9 +97,7 @@ Window_FP_Stats.prototype.makeCommandList = function () {
 Window_FP_Stats.prototype.addCommand = function(name, symbol) {
   this._list.push({
     name: name,
-    symbol: symbol,
-    enabled: enabled,
-    ext: ext
+    symbol: symbol
   });
 };
 
