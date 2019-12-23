@@ -29,6 +29,20 @@ Game_Actor.prototype.increaseAdvance = function (paramId, amount) {
   }
 };
 
+Game_Actor.prototype.advancePoints = function () {
+  return this.availableAdvances() - this.advancesTaken();
+};
+
+Game_Actor.prototype.advancesTaken = function () {
+  return Object.values(this._advances).reduce(function (total, val) {
+    return total + val;
+  }, 0);
+};
+
+Game_Actor.prototype.availableAdvances = function () {
+  return Math.floor(this._level / ) * 5;
+};
+
 Game_Actor.prototype.setup = function(actorId) {
   var actor = $dataActors[actorId];
   this._actorId = actorId;
@@ -55,8 +69,9 @@ function Window_FP_Stats () {
 Window_FP_Stats.prototype = Object.create(Window_Selectable.prototype);
 Window_FP_Stats.prototype.constructor = Window_FP_Stats;
 
-Window_FP_Stats.prototype.initialize = function (actor) {
+Window_FP_Stats.prototype.initialize = function (actor, interactive = false) {
   this._actor = actor;
+  this._interactive = interactive;
   this.clearCommandList();
   this.makeCommandList();
   const padding = this.horizontalPadding();
@@ -68,6 +83,10 @@ Window_FP_Stats.prototype.initialize = function (actor) {
   this.refresh();
   this.select(0);
   this.activate();
+};
+
+Window_FP_Stats.prototype.isInteractive = function () {
+
 };
 
 Window_FP_Stats.prototype.horizontalPadding = function () {
@@ -139,7 +158,7 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
   const param = this._actor.paramBase(paramId);
-  const iconSize = 48;
+  const iconSize = 32;
 
   this.resetTextColor();
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
