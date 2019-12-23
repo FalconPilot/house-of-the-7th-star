@@ -40,7 +40,7 @@ Game_Actor.prototype.advancesTaken = function () {
 };
 
 Game_Actor.prototype.availableAdvances = function () {
-  return Math.floor(this._level / 2) * 5;
+  return Math.floor(this._level / 2) * 3;
 };
 
 Game_Actor.prototype.setup = function(actorId) {
@@ -202,6 +202,6 @@ Scene_FP_StatsMenu.prototype.start = function () {
 };
 
 Scene_FP_StatsMenu.prototype.createStatWindow = function () {
-  this._statWindow = new Window_FP_Stats(this.actor());
+  this._statWindow = new Window_FP_Stats(this.actor(), true);
   this.addWindow(this._statWindow);
 };
