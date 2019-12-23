@@ -143,7 +143,7 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 
   this.resetTextColor();
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
-  this.drawText(param, rect.width - valueSize - iconSize, rect.y, valueSize, 'right');
+  this.drawText(param, rect.width - valueSize - iconSize, rect.y, valueSize, 'center');
   this.drawIcon(16, rect.width - iconSize, rect.y);
   this.drawIcon(17, rect.width - valueSize - iconSize, rect.y);
 };
