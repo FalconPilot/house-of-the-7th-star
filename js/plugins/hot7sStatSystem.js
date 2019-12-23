@@ -63,7 +63,6 @@ Window_FP_Stats.prototype.initialize = function (actor) {
   const width = this.windowWidth() - padding * 2;
   const height = this.windowHeight();
   const x = padding;
-  const y = 0;
   const y = Math.floor(Graphics.boxHeight - height) / 2;
   Window_Selectable.prototype.initialize.call(this, x, y, width, height);
   this.refresh();
