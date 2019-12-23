@@ -109,7 +109,20 @@ Window_FP_Stats.prototype.refresh = function () {
   console.log('Refreshing !');
 };
 
-Window_FP_Stats.prototype.commandName = function(index) {
+Window_FP_Stats.prototype.selectWidth = function () {
+  return Math.max(this._list.map(function (item, index) {
+    return this.itemRectForText(index).width;
+  }));
+};
+
+Window_Selectable.prototype.itemWidth = function() {
+  const max = Math.max(this._list.map(function (item, index) {
+    return this.itemRectForText(index).width;
+  }));
+  return max + this.padding * 2;
+};
+
+Window_FP_Stats.prototype.commandName = function (index) {
   return this._list[index].name;
 };
 
