@@ -139,9 +139,13 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
   const param = this._actor.paramBase(paramId);
+  const iconSize = 48;
+
   this.resetTextColor();
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
-  this.drawText(param, rect.width - valueSize, rect.y, valueSize, 'right');
+  this.drawText(param, rect.width - valueSize - iconSize, rect.y, valueSize, 'right');
+  this.drawIcon(16, rect.width - iconSize, rect.y);
+  this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
 };
 
 Window_FP_Stats.prototype.itemTextAlign = function () {
