@@ -113,6 +113,14 @@ Window_FP_Stats.prototype.commandName = function(index) {
   return this._list[index].name;
 };
 
+Window_FP_Stats.prototype.maxItems = function() {
+  return this._list.length;
+};
+
+Window_FP_Stats.prototype.numVisibleRows = function() {
+  return Math.ceil(this.maxItems() / this.maxCols());
+};
+
 Window_FP_Stats.prototype.drawItem = function (index) {
   var rect = this.itemRectForText(index);
   var align = this.itemTextAlign();
