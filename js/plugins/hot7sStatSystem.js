@@ -67,7 +67,6 @@ Window_FP_Stats.prototype.initialize = function (actor) {
   this.refresh();
   this.select(0);
   this.activate();
-  console.log(this._list);
 };
 
 Window_FP_Stats.prototype.windowWidth = function () {
@@ -90,7 +89,7 @@ Window_FP_Stats.prototype.makeCommandList = function () {
   }
 };
 
-Window_FP_Stats.prototype.addCommand = function(name, symbol, enabled = true, ext = undefined) {
+Window_FP_Stats.prototype.addCommand = function(name, symbol) {
   this._list.push({
     name: name,
     symbol: symbol,
@@ -106,10 +105,6 @@ Window_FP_Stats.prototype.refresh = function () {
   Window_Selectable.prototype.refresh.call(this);
 };
 
-Window_FP_Stats.prototype.isCommandEnabled = function (index) {
-  return this._list[index].enabled;
-};
-
 Window_FP_Stats.prototype.commandName = function(index) {
   return this._list[index].name;
 };
@@ -118,8 +113,11 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   var rect = this.itemRectForText(index);
   var align = this.itemTextAlign();
   this.resetTextColor();
-  this.changePaintOpacity(this.isCommandEnabled(index));
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
+};
+
+Window_FP_Stats.prototype.itemTextAlign = function () {
+  return 'left';
 };
 
 // StatsMenu Scene
