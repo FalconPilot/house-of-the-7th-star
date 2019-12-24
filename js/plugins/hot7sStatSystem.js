@@ -162,10 +162,6 @@ Window_FP_Stats.prototype.maxItems = function() {
   return this._list.length;
 };
 
-Window_FP_Stats.prototype.numVisibleRows = function() {
-  return Math.ceil(this.totalRows());
-};
-
 Window_FP_Stats.prototype.statValueSize = function () {
   return 30;
 };
