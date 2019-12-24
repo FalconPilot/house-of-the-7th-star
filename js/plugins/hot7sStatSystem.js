@@ -116,10 +116,7 @@ Window_FP_Stats.prototype.makeCommandList = function () {
 };
 
 Window_FP_Stats.prototype.addCommand = function(name, symbol) {
-  this._list.push({
-    name: name,
-    symbol: symbol
-  });
+  this._list.push({ name: name, symbol: symbol });
 };
 
 Window_FP_Stats.prototype.refresh = function () {
@@ -184,7 +181,7 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   if (this._interactive) {
     const transluscent = 80;
     const leftOpacity = this._advancesBuffer[index] > 0 ? 255 : transluscent;
-    const rightOpacity = this.pointsLeft > 0 ? 255 : transluscent;
+    const rightOpacity = this.pointsLeft() > 0 ? 255 : transluscent;
     this.setOpacity(leftOpacity);
     this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
     this.setOpacity(rightOpacity);
@@ -194,6 +191,9 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 
 Window_FP_Stats.prototype.cursorRight = function () {
   const index = this.index();
+  console.log(this.pointsLeft());
+  console.log(this._actor.advancePoints());
+  console.log(this.distributedPoints());
   if (this.pointsLeft() > 0) {
     this._advancesBuffer[index] += 1;
   }
