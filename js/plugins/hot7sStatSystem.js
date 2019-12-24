@@ -110,12 +110,16 @@ Window_FP_Stats.prototype.horizontalPadding = function () {
   return 10;
 };
 
+Window_FP_Stats.prototype.totalRows = function () {
+  this._actor.getAdvanceable().length + 1
+};
+
 Window_FP_Stats.prototype.windowWidth = function () {
   return Graphics.boxWidth;
 };
 
 Window_FP_Stats.prototype.windowHeight = function () {
-  return this.fittingHeight(this._actor.getAdvanceable().length + 1);
+  return this.fittingHeight(this.totalRows());
 };
 
 Window_FP_Stats.prototype.clearCommandList = function () {
@@ -159,7 +163,7 @@ Window_FP_Stats.prototype.maxItems = function() {
 };
 
 Window_FP_Stats.prototype.numVisibleRows = function() {
-  return Math.ceil(this.maxItems() / this.maxCols());
+  return Math.ceil(this.totalRows());
 };
 
 Window_FP_Stats.prototype.statValueSize = function () {
