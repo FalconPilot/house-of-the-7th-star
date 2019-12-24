@@ -88,7 +88,7 @@ Window_FP_Stats.prototype.initialize = function (actor, interactive = false) {
 
 Window_FP_Stats.prototype.setCursorRect = function(x, y, width, height) {
   var cx = Math.floor(x || 0);
-  var cy = Math.floor(y || 0) + this.statsOffset();
+  var cy = Math.floor(y || 0) + this.statsOffsetY();
   var cw = Math.floor(width || 0);
   var ch = Math.floor(height || 0);
   var rect = this._cursorRect;
@@ -137,6 +137,7 @@ Window_FP_Stats.prototype.addCommand = function(name, symbol) {
 Window_FP_Stats.prototype.refresh = function () {
   this.clearCommandList();
   this.makeCommandList();
+  this.drawPointsLeft();
   this.createContents();
   Window_Selectable.prototype.refresh.call(this); 
 };
@@ -179,14 +180,26 @@ Window_FP_Stats.prototype.pointsLeft = function () {
   return this._actor.advancePoints() - this.distributedPoints();
 };
 
-Window_FP_Stats.prototype.statsOffset = function () {
+Window_FP_Stats.prototype.statsOffsetY = function () {
   return this.itemHeight();
+};
+
+Window_FP_Stats.prototype.statsOffsetX = function () {
+  return 100;
+};
+
+Window_FP_Stats.prototype.drawPointsLeft = function () {
+  const text = this.pointsLeft() + ' point(s) restants';
+
+  this.setOpacity(255);
+  this.drawText(text, 0, 0, this.windowWidth(), this.lineHeight(), 'left');
 };
 
 Window_FP_Stats.prototype.drawItem = function (index) {
   const interactive = this.isInteractive()
   const rect = this.itemRectForText(index);
-  const offsetY = this.statsOffset();
+  const offsetX = this.statsOffsetX();
+  const offsetY = this.statsOffsetY();
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
   const param = this._actor.paramBase(paramId) + this._advancesBuffer[index];
@@ -195,8 +208,8 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 
   this.resetTextColor();
   this.setOpacity(255);
-  this.drawText(this.commandName(index), rect.x, rect.y + offsetY, rect.width, 'left');
-  this.drawText(param, valueX, rect.y + offsetY, valueSize, 'center');
+  this.drawText(this.commandName(index), rect.x + offsetX, rect.y + offsetY, rect.width, 'left');
+  this.drawText(param, valueX + offsetX, rect.y + offsetY, valueSize, 'center');
 
   if (this._interactive) {
     const transluscent = 80;
