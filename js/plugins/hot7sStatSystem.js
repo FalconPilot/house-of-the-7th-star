@@ -11,7 +11,7 @@ Game_Actor.prototype.paramBase = function (paramId) {
 };
 
 Game_Actor.prototype.getAdvanceable = function () {
-  return [ 2, 3, 4, 5, 6, 7 ];
+  return [2, 3, 4, 5, 6, 7];
 };
 
 Game_Actor.prototype.initAdvances = function () {
@@ -30,6 +30,7 @@ Game_Actor.prototype.increaseAdvance = function (paramId, amount) {
 };
 
 Game_Actor.prototype.advancePoints = function () {
+  console.log(this.availableAdvances() - this.advancesTaken());
   return this.availableAdvances() - this.advancesTaken();
 };
 
