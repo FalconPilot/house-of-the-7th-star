@@ -162,10 +162,13 @@ Window_FP_Stats.prototype.distributedPoints = function () {
   }, 0);
 };
 
+Window_FP_Stats.prototype.pointsLeft = function () {
+  return this._actor.advancePoints() - this.distributedPoints();
+};
+
 Window_FP_Stats.prototype.drawItem = function (index) {
   const interactive = this.isInteractive()
   const rect = this.itemRectForText(index);
-  const align = this.itemTextAlign();
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
   const param = this._actor.paramBase(paramId);
@@ -174,17 +177,13 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 
   this.resetTextColor();
   this.setOpacity(255);
-  this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
+  this.drawText(this.commandName(index), rect.x, rect.y, rect.width, 'left');
   this.drawText(param, valueX, rect.y, valueSize, 'center');
+
   if (this._interactive) {
     const transluscent = 80;
     const leftOpacity = this._advancesBuffer[index] > 0 ? 255 : transluscent;
-    const rightOpacity = (
-      this._actor.advancePoints() > 0 &&
-      this._actor.advancePoints() < this.distributedPoints()
-        ? 255
-        : transluscent
-    );
+    const rightOpacity = this.pointsLeft > 0 ? 255 : transluscent;
     this.setOpacity(leftOpacity);
     this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
     this.setOpacity(rightOpacity);
@@ -192,8 +191,18 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   }
 };
 
-Window_FP_Stats.prototype.itemTextAlign = function () {
-  return 'left';
+Window_FP_Stats.prototype.cursorRight = function () {
+  const index = this.index();
+  if (this.pointsLeft() > 0) {
+    this._advancesBuffer[index] += 1;
+  }
+};
+
+Window_FP_Stats.prototype.cursorLeft = function () {
+  const index = this.index();
+  if (this._advancesBuffer[index] > 0) {
+    this._advancesBuffer[index] -= 1;
+  }
 };
 
 // StatsMenu Scene
