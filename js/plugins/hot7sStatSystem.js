@@ -87,7 +87,7 @@ Window_FP_Stats.prototype.initialize = function (actor, interactive = false) {
 };
 
 Window_FP_Stats.prototype.setCursorRect = function(x, y, width, height) {
-  var cx = Math.floor(x || 0);
+  var cx = Math.floor(x || 0) + this.statsOffsetX();
   var cy = Math.floor(y || 0) + this.statsOffsetY();
   var cw = Math.floor(width || 0);
   var ch = Math.floor(height || 0);
@@ -191,6 +191,7 @@ Window_FP_Stats.prototype.statsOffsetX = function () {
 Window_FP_Stats.prototype.drawPointsLeft = function () {
   const text = this.pointsLeft() + ' point(s) restants';
 
+  this.resetTextColor();
   this.setOpacity(255);
   this.drawText(text, 0, 0, this.windowWidth(), this.lineHeight(), 'left');
 };
@@ -216,9 +217,9 @@ Window_FP_Stats.prototype.drawItem = function (index) {
     const leftOpacity = this._advancesBuffer[index] > 0 ? 255 : transluscent;
     const rightOpacity = this.pointsLeft() > 0 ? 255 : transluscent;
     this.setOpacity(leftOpacity);
-    this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y + offsetY);
+    this.drawIcon(17, rect.width - valueSize - iconSize * 2 + offsetX, rect.y + offsetY);
     this.setOpacity(rightOpacity);
-    this.drawIcon(16, rect.width - iconSize, rect.y + offsetY);
+    this.drawIcon(16, rect.width - iconSize + offsetX, rect.y + offsetY);
   }
 };
 
