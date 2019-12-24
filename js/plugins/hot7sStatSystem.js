@@ -194,7 +194,7 @@ Window_FP_Stats.prototype.drawPointsLeft = function () {
 
   this.resetTextColor();
   this.setOpacity(255);
-  this.drawText(text, 0, 0, this.windowWidth(), this.lineHeight(), 'left');
+  this.drawText(text, this.statsOffsetX(), 0, this.selectWidth(), this.lineHeight(), 'center');
 };
 
 Window_FP_Stats.prototype.drawItem = function (index) {
