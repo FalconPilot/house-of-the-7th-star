@@ -86,6 +86,22 @@ Window_FP_Stats.prototype.initialize = function (actor, interactive = false) {
   this.activate();
 };
 
+Window_FP_Stats.prototype.setCursorRect = function(x, y, width, height) {
+  var cx = Math.floor(x || 0);
+  var cy = Math.floor(y || 0) + this.statsOffset();
+  var cw = Math.floor(width || 0);
+  var ch = Math.floor(height || 0);
+  var rect = this._cursorRect;
+  if (rect.x !== cx || rect.y !== cy || rect.width !== cw || rect.height !== ch) {
+    this._cursorRect.x = cx;
+    this._cursorRect.y = cy ;
+    this._cursorRect.width = cw;
+    this._cursorRect.height = ch;
+    this._refreshCursor();
+  }
+};
+
+
 Window_FP_Stats.prototype.isInteractive = function () {
   return this._interactive;
 };
