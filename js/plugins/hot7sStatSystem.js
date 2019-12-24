@@ -111,7 +111,7 @@ Window_FP_Stats.prototype.horizontalPadding = function () {
 };
 
 Window_FP_Stats.prototype.totalRows = function () {
-  this._actor.getAdvanceable().length + 1
+  return this._actor.getAdvanceable().length + 1
 };
 
 Window_FP_Stats.prototype.windowWidth = function () {
