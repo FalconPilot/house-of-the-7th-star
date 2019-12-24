@@ -171,7 +171,7 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
   this.drawText(param, valueX, rect.y, valueSize, 'center');
   if (this._interactive) {
-    this.setOpacity(50;
+    this.setOpacity(50);
     this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
     this.setOpacity(255);
     this.drawIcon(16, rect.width - iconSize, rect.y);
