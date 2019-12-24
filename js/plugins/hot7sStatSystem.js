@@ -72,6 +72,7 @@ Window_FP_Stats.prototype.constructor = Window_FP_Stats;
 Window_FP_Stats.prototype.initialize = function (actor, interactive = false) {
   this._actor = actor;
   this._interactive = interactive;
+  this._advancesBuffer = actor.getAdvanceable().map(function () { return 0; });
   this.clearCommandList();
   this.makeCommandList();
   const padding = this.horizontalPadding();
@@ -124,8 +125,7 @@ Window_FP_Stats.prototype.refresh = function () {
   this.clearCommandList();
   this.makeCommandList();
   this.createContents();
-  Window_Selectable.prototype.refresh.call(this);
-  console.log('Refreshing !');
+  Window_Selectable.prototype.refresh.call(this); 
 };
 
 Window_FP_Stats.prototype.selectWidth = function () {
@@ -154,7 +154,13 @@ Window_FP_Stats.prototype.statValueSize = function () {
 
 Window_FP_Stats.prototype.setOpacity = function (value) {
   this.contents.paintOpacity = value;
-}
+};
+
+Window_FP_Stats.prototype.distributedPoints = function () {
+  return this._advancesBuffer.reduce(function (total, amt) {
+    return total + amt;
+  }, 0);
+};
 
 Window_FP_Stats.prototype.drawItem = function (index) {
   const interactive = this.isInteractive()
@@ -171,9 +177,17 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   this.drawText(this.commandName(index), rect.x, rect.y, rect.width, align);
   this.drawText(param, valueX, rect.y, valueSize, 'center');
   if (this._interactive) {
-    this.setOpacity(50);
+    const transluscent = 80;
+    const leftOpacity = this._advancesBuffer[index] > 0 ? 255 : transluscent;
+    const rightOpacity = (
+      this._actor.advancePoints() > 0 &&
+      this._actor.advancePoints() < this.distributedPoints()
+        ? 255
+        : transluscent
+    );
+    this.setOpacity(leftOpacity);
     this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
-    this.setOpacity(255);
+    this.setOpacity(rightOpacity);
     this.drawIcon(16, rect.width - iconSize, rect.y);
   }
 };
