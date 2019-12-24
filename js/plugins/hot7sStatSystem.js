@@ -141,8 +141,8 @@ Window_FP_Stats.prototype.addCommand = function(name, symbol) {
 Window_FP_Stats.prototype.refresh = function () {
   this.clearCommandList();
   this.makeCommandList();
-  this.drawPointsLeft();
   this.createContents();
+  this.drawPointsLeft();
   Window_Selectable.prototype.refresh.call(this); 
 };
 
