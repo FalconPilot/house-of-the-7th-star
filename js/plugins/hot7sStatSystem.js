@@ -190,6 +190,7 @@ Window_FP_Stats.prototype.statsOffsetX = function () {
 
 Window_FP_Stats.prototype.drawPointsLeft = function () {
   const text = this.pointsLeft() + ' point(s) restants';
+  console.log(text);
 
   this.resetTextColor();
   this.setOpacity(255);
@@ -226,17 +227,19 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 Window_FP_Stats.prototype.cursorRight = function () {
   const index = this.index();
   if (this.pointsLeft() > 0) {
+    SoundManager.playCursor();
     this._advancesBuffer[index] += 1;
+    this.refresh();
   }
-  this.refresh();
 };
 
 Window_FP_Stats.prototype.cursorLeft = function () {
   const index = this.index();
   if (this._advancesBuffer[index] > 0) {
+    SoundManager.playCursor();
     this._advancesBuffer[index] -= 1;
+    this.refresh();
   }
-  this.refresh();
 };
 
 // StatsMenu Scene
