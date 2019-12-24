@@ -142,8 +142,8 @@ Window_FP_Stats.prototype.refresh = function () {
   this.clearCommandList();
   this.makeCommandList();
   this.createContents();
-  this.drawPointsLeft();
   Window_Selectable.prototype.refresh.call(this); 
+  this.drawPointsLeft();
 };
 
 Window_FP_Stats.prototype.selectWidth = function () {
