@@ -99,7 +99,7 @@ Window_FP_Stats.prototype.windowWidth = function () {
 };
 
 Window_FP_Stats.prototype.windowHeight = function () {
-  return this.fittingHeight(this._actor.getAdvanceable().length);
+  return this.fittingHeight(this._actor.getAdvanceable().length + 1);
 };
 
 Window_FP_Stats.prototype.clearCommandList = function () {
@@ -163,9 +163,14 @@ Window_FP_Stats.prototype.pointsLeft = function () {
   return this._actor.advancePoints() - this.distributedPoints();
 };
 
+Window_FP_Stats.prototype.statsOffset = function () {
+  return this.itemHeight();
+};
+
 Window_FP_Stats.prototype.drawItem = function (index) {
   const interactive = this.isInteractive()
   const rect = this.itemRectForText(index);
+  const offsetY = this.statsOffset();
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
   const param = this._actor.paramBase(paramId) + this._advancesBuffer[index];
@@ -174,17 +179,17 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 
   this.resetTextColor();
   this.setOpacity(255);
-  this.drawText(this.commandName(index), rect.x, rect.y, rect.width, 'left');
-  this.drawText(param, valueX, rect.y, valueSize, 'center');
+  this.drawText(this.commandName(index), rect.x, rect.y + offsetY, rect.width, 'left');
+  this.drawText(param, valueX, rect.y + offsetY, valueSize, 'center');
 
   if (this._interactive) {
     const transluscent = 80;
     const leftOpacity = this._advancesBuffer[index] > 0 ? 255 : transluscent;
     const rightOpacity = this.pointsLeft() > 0 ? 255 : transluscent;
     this.setOpacity(leftOpacity);
-    this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y);
+    this.drawIcon(17, rect.width - valueSize - iconSize * 2, rect.y + offsetY);
     this.setOpacity(rightOpacity);
-    this.drawIcon(16, rect.width - iconSize, rect.y);
+    this.drawIcon(16, rect.width - iconSize, rect.y + offsetY);
   }
 };
 
