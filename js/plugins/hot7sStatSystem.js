@@ -171,7 +171,7 @@ Window_FP_Stats.prototype.drawItem = function (index) {
   const rect = this.itemRectForText(index);
   const valueSize = this.statValueSize();
   const paramId = this._actor.getAdvanceable()[index];
-  const param = this._actor.paramBase(paramId);
+  const param = this._actor.paramBase(paramId) + this._advancesBuffer[index];
   const iconSize = 32;
   const valueX = rect.width - valueSize - (interactive ? iconSize : 0);
 
