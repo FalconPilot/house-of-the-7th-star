@@ -30,7 +30,6 @@ Game_Actor.prototype.increaseAdvance = function (paramId, amount) {
 };
 
 Game_Actor.prototype.advancePoints = function () {
-  console.log(this.availableAdvances() - this.advancesTaken());
   return this.availableAdvances() - this.advancesTaken();
 };
 
@@ -191,12 +190,10 @@ Window_FP_Stats.prototype.drawItem = function (index) {
 
 Window_FP_Stats.prototype.cursorRight = function () {
   const index = this.index();
-  console.log(this.pointsLeft());
-  console.log(this._actor.advancePoints());
-  console.log(this.distributedPoints());
   if (this.pointsLeft() > 0) {
     this._advancesBuffer[index] += 1;
   }
+  this.refresh();
 };
 
 Window_FP_Stats.prototype.cursorLeft = function () {
@@ -204,6 +201,7 @@ Window_FP_Stats.prototype.cursorLeft = function () {
   if (this._advancesBuffer[index] > 0) {
     this._advancesBuffer[index] -= 1;
   }
+  this.refresh();
 };
 
 // StatsMenu Scene
