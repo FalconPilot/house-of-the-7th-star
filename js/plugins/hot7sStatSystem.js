@@ -242,6 +242,10 @@ Window_FP_Stats.prototype.cursorLeft = function () {
   }
 };
 
+Window_FP_Stats.prototype.isOkEnabled = function() {
+  return true;
+};
+
 Window_FP_Stats.prototype.processOk = function() {
   this.playOkSound();
   this.updateInputData();
