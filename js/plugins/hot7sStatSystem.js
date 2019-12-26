@@ -60,6 +60,17 @@ Game_Actor.prototype.setup = function(actorId) {
   this.recoverAll();
 };
 
+// Confirmation window
+
+Window_FP_YesNo.prototype = Object.create(Window_Command.prototype);
+Window_FP_YesNo.prototype.constructor = Window_FP_YesNo;
+
+Window_FP_YesNo.prototype.initialize = function (handleYes, handleNo) {
+  const x = (Graphics.boxWidth - this.windowWidth()) / 2;
+  const y = (Graphics.boxHeight - this.windowHeight()) / 2;
+  Window_Command.prototype.initialize.call(this, x, y);
+};
+
 // Stat window
 
 function Window_FP_Stats () {
@@ -250,7 +261,7 @@ Window_FP_Stats.prototype.processOk = function() {
   this.playOkSound();
   this.updateInputData();
   this.deactivate();
-  this.callOkHandler();
+  // this.callOkHandler();
 };
 
 // StatsMenu Scene
