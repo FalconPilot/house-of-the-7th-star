@@ -242,6 +242,13 @@ Window_FP_Stats.prototype.cursorLeft = function () {
   }
 };
 
+Window_FP_Stats.prototype.processOk = function() {
+  this.playOkSound();
+  this.updateInputData();
+  this.deactivate();
+  this.callOkHandler();
+};
+
 // StatsMenu Scene
 
 function Scene_FP_StatsMenu () {
