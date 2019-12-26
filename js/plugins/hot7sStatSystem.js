@@ -62,6 +62,10 @@ Game_Actor.prototype.setup = function(actorId) {
 
 // Confirmation window
 
+function Window_FP_YesNo () {
+  this.initialize.apply(this, arguments);
+}
+
 Window_FP_YesNo.prototype = Object.create(Window_Command.prototype);
 Window_FP_YesNo.prototype.constructor = Window_FP_YesNo;
 
