@@ -71,6 +71,11 @@ Window_FP_YesNo.prototype.initialize = function (handleYes, handleNo) {
   Window_Command.prototype.initialize.call(this, x, y);
 };
 
+Window_FP_YesNo.prototype.makeCommandList = function () {
+  this.addCommand('Confirmer', 'confirm');
+  this.addCommand('Retour', 'back');
+};
+
 // Stat window
 
 function Window_FP_Stats () {

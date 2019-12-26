@@ -14,8 +14,11 @@
   const pluginName = 'SetAnimationFramerate';
   const parameters = PluginManager.parameters(pluginName);
   const fps = Number(parameters.FPS || 15);
+  const rate = Math.ceil(60 / fps);
+
+  console.log('Game animations clocked at Rate ' + rate + ' (Configured ' + fps + ' FPS)');
 
   Sprite_Animation.prototype.setupRate = function () {
-    this._rate = Math.ceil(60 / fps);
+    this._rate = rate;
   };
 })();
