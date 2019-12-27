@@ -13,3 +13,7 @@ Game_Battler.prototype.regenerateTp = function() {
 Game_BattlerBase.prototype.maxTp = function() {
   return 3;
 };
+
+Game_Battler.prototype.initTp = function() {
+  this.setTp(0);
+};
