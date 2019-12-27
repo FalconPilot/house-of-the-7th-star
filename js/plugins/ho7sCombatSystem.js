@@ -25,11 +25,11 @@ Game_Battler.prototype.initTp = function() {
 Window_Base.prototype.drawPoints = function (x, y, width, amount, max, color1, color2) {
   const padding = 1;
   const pointWidth = (width / max) - (max * padding * 2);
+  const pointY = y + this.lineHeight() - 8;
   for (var i = 0; i < max; i++) {
-    // const gaugeY = y + this.lineHeight() - 8;
     const pointX = x + (pointWidth + padding) * i;
-    this.contents.fillRect(pointX, y, pointWidth, 6, this.gaugeBackColor());
-    this.contents.gradientFillRect(pointX, y, pointWidth, 6, color1, color2);
+    this.contents.fillRect(pointX, pointY, pointWidth, 6, this.gaugeBackColor());
+    this.contents.gradientFillRect(pointX, pointY, pointWidth, 6, color1, color2);
   }
 };
 
