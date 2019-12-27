@@ -270,6 +270,7 @@ Window_FP_Stats.prototype.processOk = function() {
   this.playOkSound();
   this.updateInputData();
   this.deactivate();
+  this._confirmWindow = new Window_FP_YesNo('Confirmer', 'Retour');
   // this.callOkHandler();
 };
 
