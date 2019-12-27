@@ -69,7 +69,7 @@ function Window_FP_YesNo () {
 Window_FP_YesNo.prototype = Object.create(Window_Command.prototype);
 Window_FP_YesNo.prototype.constructor = Window_FP_YesNo;
 
-Window_FP_YesNo.prototype.initialize = function (handleYes, handleNo) {
+Window_FP_YesNo.prototype.initialize = function () {
   const x = (Graphics.boxWidth - this.windowWidth()) / 2;
   const y = (Graphics.boxHeight - this.windowHeight()) / 2;
   Window_Command.prototype.initialize.call(this, x, y);
