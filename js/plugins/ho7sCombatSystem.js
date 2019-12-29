@@ -164,6 +164,14 @@ Scene_Battle.prototype.updateWindowPositions = function() {
   // }
 };
 
+Scene_Battle.prototype.startActorCommandSelection = function() {
+  // this._statusWindow.select(BattleManager.actor().index());
+  const actorIndex = BattleManager.actor().index()
+  // this._statusWindows[actorIndex].select();
+  this._partyCommandWindow.close();
+  this._actorCommandWindow.setup(BattleManager.actor());
+};
+
 // Window_Base override
 
 Window_Base.prototype.drawPoints = function (x, y, width, amount, max, color1, color2) {
