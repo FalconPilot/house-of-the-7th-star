@@ -139,6 +139,10 @@ Scene_Battle.prototype.updateStatusWindow = function() {
   }
 };
 
+Scene_Battle.prototype.refreshStatus = function() {
+  // this._statusWindow.refresh();
+};
+
 Scene_Battle.prototype.updateWindowPositions = function() {
   // var statusX = 0;
   // if (BattleManager.isInputting()) {
