@@ -258,5 +258,5 @@ Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
 };
 
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
-  this.drawText('FooBar', this._x, this._y, this._windowWidth, 'center');
+  this.drawText('FooBar', 0, 0, this._windowWidth, 'center');
 };
