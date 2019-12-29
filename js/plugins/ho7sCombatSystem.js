@@ -263,11 +263,10 @@ Window_FP_BattleStatus.prototype.drawActorStats = function () {
 };
 
 Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
-  console.log(value, max);
   const slashWidth = 6;
   const width = (this._windowWidth - slashWidth) / 2;
   this.contents.fontSize = 10;
-  this.drawText(value, 0, y, width, 'right');
+  this.drawText('999', 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
-  this.drawText(max, width + slashWidth, y, 'left');
+  this.drawText('999', width + slashWidth, y, width, 'left');
 };
