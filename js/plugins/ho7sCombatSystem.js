@@ -194,7 +194,7 @@ Scene_Battle.prototype.createDisplayObjects = function() {
   this.createWindowLayer();
   this.createAllWindows();
   BattleManager.setLogWindow(this._logWindow);
-  BattleManager.setStatusWindows(this._statusWindows);
+  BattleManager.setStatusWindow(this._statusWindows);
   BattleManager.setSpriteset(this._spriteset);
   this._logWindow.setSpriteset(this._spriteset);
 };
