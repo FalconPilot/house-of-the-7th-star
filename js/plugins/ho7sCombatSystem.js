@@ -260,12 +260,13 @@ Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
   // this.resetTextColor();
   // this.setOpacity(255);
-  this.drawParamGauge(0, this.actor.hp, 999)
+  this.drawParamGauge(0, this._actor.hp, this._actor.mhp)
 };
 
 Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
   const slashWidth = 6;
   const width = (this._windowWidth - slashWidth) / 2;
   this.drawText(value, 0, y, width, 'right');
-  this.drawText(max, width + slashWidth, y, 'left')
+  this.drawText('/', width, y slashWidth, 'center')
+  this.drawText(max, width + slashWidth, y, 'left');
 };
