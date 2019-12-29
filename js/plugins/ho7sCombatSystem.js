@@ -263,6 +263,7 @@ Window_FP_BattleStatus.prototype.drawActorStats = function () {
 };
 
 Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
+  console.log(value, max);
   const slashWidth = 6;
   const width = (this._windowWidth - slashWidth) / 2;
   this.contents.fontSize = 10;
