@@ -265,16 +265,15 @@ Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
   // this.resetTextColor();
   // this.setOpacity(255);
-  this.drawParamGauge(0, this._actor.hp, this._actor.mhp);
+  this.drawParamGauge(0, this._actor.hp, this._actor.mhp, this._actor.hpRate(), this.hpGaugeColor1());
 };
 
-Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
+Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max, rate, color) {
   const slashWidth = 6;
   const width = (this.width - slashWidth) / 2;
   this.contents.fontSize = 12;
-  const color = this.hpGaugeColor1();
-  this.drawText(this._actor.hp, 0, y, width, 'right');
+  this.drawText(value, 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
-  this.drawText(this._actor.mhp, width + slashWidth, y, width, 'left');
-  this.drawGauge(0, y + 10, this.width, this._actor.hpRate(), color, color);
+  this.drawText(max, width + slashWidth, y, width, 'left');
+  this.drawGauge(0, y + 10, this.width, rate, color, color);
 };
