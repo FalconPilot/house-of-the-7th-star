@@ -254,7 +254,7 @@ Window_FP_BattleStatus.prototype.updatePadding = function () {
 };
 
 Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
-  this.opacity = 0;
+  // this.opacity = 0;
 };
 
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
