@@ -25,32 +25,35 @@ Game_Battler.prototype.chargeTpByDamage = function () {
 
 // Scene_Battle override
 
+Scene_Battle.prototype.actorSpriteY = function () {
+  return 350;
+};
+
+Scene_Battle.prototype.actorSpriteHeight = function () {
+  return 140;
+};
+
 Scene_Battle.prototype.createStatusWindow = function () {
   const spriteWidth = 80;
   const spacing = 100;
   const party = $gameParty.battleMembers();
-  const spriteY = 350;
-  const spriteHeight = 140;
-  const positions = [
-    [
-      (Graphics.boxWidth - spriteWidth) / 2
-    ],
-    [
-      (Graphics.boxWidth - spriteWidth) / 2 - spacing / 2,
-      (Graphics.boxWidth - spriteWidth) / 2 + spacing / 2
-    ],
-    [
-      (Graphics.boxWidth - spriteWidth) / 2 - spacing,
-      (Graphics.boxWidth - spriteWidth) / 2,
-      (Graphics.boxWidth - spriteWidth) / 2 + spacing
-    ],
-    [
-      (Graphics.boxWidth - spriteWidth) / 2 - spacing * 1.5,
-      (Graphics.boxWidth - spriteWidth) / 2 - spacing / 2,
-      (Graphics.boxWidth - spriteWidth) / 2 + spacing / 2,
-      (Graphics.boxWidth - spriteWidth) / 2 + spacing * 1.5
-    ]
-  ]
+  const spriteY = this.actorSpriteY();
+  const spriteHeight = this.actorSpriteHeight();
+  const positions = [[
+    (Graphics.boxWidth - spriteWidth) / 2
+  ], [
+    (Graphics.boxWidth - spriteWidth) / 2 - spacing / 2,
+    (Graphics.boxWidth - spriteWidth) / 2 + spacing / 2
+  ], [
+    (Graphics.boxWidth - spriteWidth) / 2 - spacing,
+    (Graphics.boxWidth - spriteWidth) / 2,
+    (Graphics.boxWidth - spriteWidth) / 2 + spacing
+  ], [
+    (Graphics.boxWidth - spriteWidth) / 2 - spacing * 1.5,
+    (Graphics.boxWidth - spriteWidth) / 2 - spacing / 2,
+    (Graphics.boxWidth - spriteWidth) / 2 + spacing / 2,
+    (Graphics.boxWidth - spriteWidth) / 2 + spacing * 1.5
+  ]];
   for (var i = 0; i < party.length; i++) {
     const actor = party[i];
     const x = positions[party.length - 1][i];
@@ -63,6 +66,16 @@ Scene_Battle.prototype.createStatusWindow = function () {
 
 Scene_Battle.prototype.createActorStatus = function (x, y, width, height, actor) {
   const actorStatusWindow = new Window_FP_BattleStatus(x, y, width, height, actor);
+};
+
+Scene_Battle.prototype.createSkillWindow = function() {
+  const wy = this._helpWindow.y + this._helpWindow.height;
+  const wh = Graphics.boxHeight - this._helpWindow.height;
+  this._skillWindow = new Window_BattleSkill(0, wy, Graphics.boxWidth, wh);
+  this._skillWindow.setHelpWindow(this._helpWindow);
+  this._skillWindow.setHandler('ok',     this.onSkillOk.bind(this));
+  this._skillWindow.setHandler('cancel', this.onSkillCancel.bind(this));
+  this.addWindow(this._skillWindow);
 };
 
 // Window_Base override
@@ -94,7 +107,13 @@ Window_Base.prototype.drawActorTp = function (actor, x, y, width) {
   this.drawText(actor.tp, x + width - 64, y, 64, 'right');
 };
 
-// BattleStatus changes
+// BattleManager override
+
+BattleManager.refreshStatus = function() {
+  // this._statusWindow.refresh();
+};
+
+// BattleStatus new window template
 
 function Window_FP_BattleStatus () {
   this.initialize.apply(this, arguments);
