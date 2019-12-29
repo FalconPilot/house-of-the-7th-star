@@ -189,6 +189,16 @@ Scene_Battle.prototype.startActorCommandSelection = function() {
   this._actorCommandWindow.setup(BattleManager.actor());
 };
 
+Scene_Battle.prototype.createDisplayObjects = function() {
+  this.createSpriteset();
+  this.createWindowLayer();
+  this.createAllWindows();
+  BattleManager.setLogWindow(this._logWindow);
+  BattleManager.setStatusWindows(this._statusWindows);
+  BattleManager.setSpriteset(this._spriteset);
+  this._logWindow.setSpriteset(this._spriteset);
+};
+
 // Window_Base override
 
 Window_Base.prototype.drawPoints = function (x, y, width, amount, max, color1, color2) {
@@ -224,6 +234,10 @@ BattleManager.refreshStatus = function() {
   this._statusWindows.forEach(function (window) {
     window.refresh();
   });
+};
+
+BattleManager.setStatusWindow = function (statusWindows) {
+  this._statusWindows = statusWindows;
 };
 
 // BattleStatus new window template
