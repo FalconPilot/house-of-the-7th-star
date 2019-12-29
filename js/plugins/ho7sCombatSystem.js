@@ -259,7 +259,7 @@ Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
 };
 
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
-  this.resetTextColor();
-  this.setOpacity(255);
+  // this.resetTextColor();
+  // this.setOpacity(255);
   this.drawText('FooBar', 0, 0, this._windowWidth, 'center');
 };
