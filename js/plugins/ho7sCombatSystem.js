@@ -64,6 +64,7 @@ Scene_Battle.prototype.createStatusWindow = function () {
     (Graphics.boxWidth - spriteWidth) / 2 + spacing * 1.5
   ]];
   for (var i = 0; i < party.length; i++) {
+    console.log('Member ' + (i + 1));
     const actor = party[i];
     const x = positions[party.length - 1][i];
     const y = spriteY + spriteHeight / 2;
