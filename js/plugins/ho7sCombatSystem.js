@@ -231,7 +231,7 @@ function Window_FP_BattleStatus () {
 Window_FP_BattleStatus.prototype = Object.create(Window_Base.prototype);
 Window_FP_BattleStatus.prototype.constructor = Window_FP_BattleStatus;
 
-Window_FP_Stats.prototype.initialize = function (x, y, width, height, actor) {
+Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, actor) {
   this._x = x;
   this._y = y;
   this._windowWidth = width;
@@ -240,7 +240,7 @@ Window_FP_Stats.prototype.initialize = function (x, y, width, height, actor) {
   Window.prototype.initialize.call(this);
   // this.loadWindowskin();
   this.move(x, y, width, height);
-  this.updatePadding();
+  // this.updatePadding();
   // this.updateBackOpacity();
   // this.updateTone();
   this.createContents();
@@ -249,6 +249,6 @@ Window_FP_Stats.prototype.initialize = function (x, y, width, height, actor) {
   this._dimmerSprite = null;
 };
 
-Window_FP_Stats.prototype.drawActorStats = function () {
+Window_FP_BattleStatus.prototype.drawActorStats = function () {
   this.drawText('FooBar', this._x, this._y, this._windowWidth, 'center');
 };
