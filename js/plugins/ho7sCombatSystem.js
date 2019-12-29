@@ -26,16 +26,20 @@ Game_Battler.prototype.chargeTpByDamage = function () {
 // Scene_Battle override
 
 Scene_Battle.prototype.actorSpriteY = function () {
-  return 350;
+  return 300;
 };
 
 Scene_Battle.prototype.actorSpriteHeight = function () {
   return 140;
 };
 
+Scene_Battle.prototype.actorSpriteWidth = function () {
+  return 80;
+};
+
 Scene_Battle.prototype.createStatusWindow = function () {
   this._statusWindows = [];
-  const spriteWidth = 80;
+  const spriteWidth = this.actorSpriteWidth();
   const spacing = 100;
   const party = $gameParty.battleMembers();
   const spriteY = this.actorSpriteY();
@@ -92,14 +96,16 @@ Scene_Battle.prototype.createItemWindow = function() {
 };
 
 Scene_Battle.prototype.createActorWindow = function() {
-  this._actorWindow = new Window_BattleActor(0, this.actorSpriteY());
+  const y = Graphics.boxHeight - this._actorCommandWindow.windowHeight();
+  this._actorWindow = new Window_BattleActor(0, y);
   this._actorWindow.setHandler('ok',     this.onActorOk.bind(this));
   this._actorWindow.setHandler('cancel', this.onActorCancel.bind(this));
   this.addWindow(this._actorWindow);
 };
 
 Scene_Battle.prototype.createEnemyWindow = function() {
-  this._enemyWindow = new Window_BattleEnemy(0, this.actorSpriteY());
+  const y = Graphics.boxHeight - this._actorCommandWindow.windowHeight();
+  this._enemyWindow = new Window_BattleEnemy(0, y);
   this._enemyWindow.x = Graphics.boxWidth - this._enemyWindow.width;
   this._enemyWindow.setHandler('ok',     this.onEnemyOk.bind(this));
   this._enemyWindow.setHandler('cancel', this.onEnemyCancel.bind(this));
