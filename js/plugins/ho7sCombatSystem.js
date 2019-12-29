@@ -158,7 +158,9 @@ Scene_Battle.prototype.updateStatusWindow = function() {
 };
 
 Scene_Battle.prototype.refreshStatus = function() {
-  // this._statusWindow.refresh();
+  this._statusWindows.forEach(function (window) {
+    window.refresh();
+  });
 };
 
 Scene_Battle.prototype.updateWindowPositions = function() {
@@ -219,7 +221,9 @@ Window_Base.prototype.drawActorTp = function (actor, x, y, width) {
 // BattleManager override
 
 BattleManager.refreshStatus = function() {
-  // this._statusWindow.refresh();
+  this._statusWindows.forEach(function (window) {
+    window.refresh();
+  });
 };
 
 // BattleStatus new window template
