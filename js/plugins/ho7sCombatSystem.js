@@ -44,7 +44,7 @@ Scene_Battle.prototype.actorSpriteSpacing = function () {
 Scene_Battle.prototype.createStatusWindow = function () {
   this._statusWindows = [];
   const spriteWidth = this.actorSpriteWidth();
-  const spacing = this.actorSpriteSpacing();
+  const spacing = this.actorSpriteSpacing() + this.actorSpriteWidth();
   const party = $gameParty.battleMembers();
   console.log(party);
   const spriteY = this.actorSpriteY();
