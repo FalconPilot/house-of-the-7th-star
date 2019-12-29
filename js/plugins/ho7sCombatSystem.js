@@ -89,18 +89,18 @@ Scene_Battle.prototype.createItemWindow = function() {
 };
 
 Scene_Battle.prototype.createActorWindow = function() {
-  // this._actorWindow = new Window_BattleActor(0, this._statusWindow.y);
-  // this._actorWindow.setHandler('ok',     this.onActorOk.bind(this));
-  // this._actorWindow.setHandler('cancel', this.onActorCancel.bind(this));
-  // this.addWindow(this._actorWindow);
+  this._actorWindow = new Window_BattleActor(0, this.actorSpriteY());
+  this._actorWindow.setHandler('ok',     this.onActorOk.bind(this));
+  this._actorWindow.setHandler('cancel', this.onActorCancel.bind(this));
+  this.addWindow(this._actorWindow);
 };
 
 Scene_Battle.prototype.createEnemyWindow = function() {
-  // this._enemyWindow = new Window_BattleEnemy(0, this._statusWindow.y);
-  // this._enemyWindow.x = Graphics.boxWidth - this._enemyWindow.width;
-  // this._enemyWindow.setHandler('ok',     this.onEnemyOk.bind(this));
-  // this._enemyWindow.setHandler('cancel', this.onEnemyCancel.bind(this));
-  // this.addWindow(this._enemyWindow);
+  this._enemyWindow = new Window_BattleEnemy(0, this.actorSpriteY());
+  this._enemyWindow.x = Graphics.boxWidth - this._enemyWindow.width;
+  this._enemyWindow.setHandler('ok',     this.onEnemyOk.bind(this));
+  this._enemyWindow.setHandler('cancel', this.onEnemyCancel.bind(this));
+  this.addWindow(this._enemyWindow);
 };
 
 Scene_Battle.prototype.stop = function() {
