@@ -247,6 +247,7 @@ Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, act
   this._opening = false;
   this._closing = false;
   this._dimmerSprite = null;
+  this.drawActorStats();
 };
 
 Window_FP_BattleStatus.prototype.updatePadding = function () {
@@ -258,5 +259,7 @@ Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
 };
 
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
+  this.resetTextColor();
+  this.setOpacity(255);
   this.drawText('FooBar', 0, 0, this._windowWidth, 'center');
 };
