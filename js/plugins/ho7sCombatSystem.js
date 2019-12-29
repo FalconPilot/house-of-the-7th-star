@@ -248,9 +248,9 @@ Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, act
   this.drawActorStats();
 };
 
-// Window_FP_BattleStatus.prototype.updatePadding = function () {
-//   this.padding = 0;
-// };
+Window_FP_BattleStatus.prototype.updatePadding = function () {
+  this.padding = 0;
+};
 
 Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
   this.opacity = 50;
