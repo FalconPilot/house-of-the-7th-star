@@ -103,6 +103,28 @@ Scene_Battle.prototype.createEnemyWindow = function() {
   // this.addWindow(this._enemyWindow);
 };
 
+Scene_Battle.prototype.stop = function() {
+  Scene_Base.prototype.stop.call(this);
+  if (this.needsSlowFadeOut()) {
+    this.startFadeOut(this.slowFadeSpeed(), false);
+  } else {
+    this.startFadeOut(this.fadeSpeed(), false);
+  }
+  // this._statusWindow.close();
+  this._partyCommandWindow.close();
+  this._actorCommandWindow.close();
+};
+
+Scene_Battle.prototype.updateStatusWindow = function() {
+  if ($gameMessage.isBusy()) {
+    // this._statusWindow.close();
+    this._partyCommandWindow.close();
+    this._actorCommandWindow.close();
+  } else if (this.isActive() && !this._messageWindow.isClosing()) {
+    // this._statusWindow.open();
+  }
+};
+
 // Window_Base override
 
 Window_Base.prototype.drawPoints = function (x, y, width, amount, max, color1, color2) {
