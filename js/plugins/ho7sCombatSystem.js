@@ -37,10 +37,14 @@ Scene_Battle.prototype.actorSpriteWidth = function () {
   return 80;
 };
 
+Scene_Battle.prototype.actorSpriteSpacing = function () {
+  return this.actorSpriteWidth();
+};
+
 Scene_Battle.prototype.createStatusWindow = function () {
   this._statusWindows = [];
   const spriteWidth = this.actorSpriteWidth();
-  const spacing = 100;
+  const spacing = this.actorSpriteSpacing();
   const party = $gameParty.battleMembers();
   const spriteY = this.actorSpriteY();
   const spriteHeight = this.actorSpriteHeight();
