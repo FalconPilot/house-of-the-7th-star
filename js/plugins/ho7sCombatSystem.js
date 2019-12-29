@@ -103,6 +103,20 @@ Scene_Battle.prototype.createEnemyWindow = function() {
   this.addWindow(this._enemyWindow);
 };
 
+Scene_Battle.prototype.startPartyCommandSelection = function() {
+  this.refreshStatus();
+  // this._statusWindow.deselect();
+  // this._statusWindow.open();
+  this._actorCommandWindow.close();
+  this._partyCommandWindow.setup();
+};
+
+Scene_Battle.prototype.endCommandSelection = function() {
+  this._partyCommandWindow.close();
+  this._actorCommandWindow.close();
+  // this._statusWindow.deselect();
+};
+
 Scene_Battle.prototype.stop = function() {
   Scene_Base.prototype.stop.call(this);
   if (this.needsSlowFadeOut()) {
