@@ -273,8 +273,8 @@ Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
   const width = (this.width - slashWidth) / 2;
   this.contents.fontSize = 12;
   const color = this.hpGaugeColor1();
-  this.drawText('999', 0, y, width, 'right');
+  this.drawText(this._actor.hp, 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
-  this.drawText('999', width + slashWidth, y, width, 'left');
+  this.drawText(this._actor.mhp, width + slashWidth, y, width, 'left');
   this.drawGauge(0, y + 10, this.width, this._actor.hpRate(), color, color);
 };
