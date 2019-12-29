@@ -1,7 +1,7 @@
 [
 null,
-{"id":1,"battlerName":"","characterIndex":4,"characterName":"Actor1","classId":1,"equips":[0,0,0,0,0],"faceIndex":4,"faceName":"Actor1","traits":[{"code":11,"dataId":7,"value":0.05},{"code":51,"dataId":1,"value":1}],"initialLevel":10,"maxLevel":20,"name":"???","nickname":"","note":"Sigma","profile":""},
-{"id":2,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""},
-{"id":3,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""},
+{"id":1,"battlerName":"","characterIndex":4,"characterName":"Actor1","classId":1,"equips":[0,0,0,0,0],"faceIndex":4,"faceName":"Actor1","traits":[{"code":11,"dataId":7,"value":0.05},{"code":51,"dataId":1,"value":1}],"initialLevel":1,"maxLevel":20,"name":"???","nickname":"","note":"Sigma","profile":""},
+{"id":2,"battlerName":"","characterIndex":0,"characterName":"Actor1","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Actor1","traits":[{"code":11,"dataId":7,"value":0.05},{"code":51,"dataId":1,"value":1}],"initialLevel":1,"maxLevel":20,"name":"Conan","nickname":"","note":"Sigma","profile":""},
+{"id":3,"battlerName":"","characterIndex":0,"characterName":"Actor2","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"Actor2","traits":[{"code":11,"dataId":7,"value":0.05},{"code":51,"dataId":1,"value":1}],"initialLevel":1,"maxLevel":20,"name":"Gerhard","nickname":"","note":"Sigma","profile":""},
 {"id":4,"battlerName":"","characterIndex":0,"characterName":"","classId":1,"equips":[0,0,0,0,0],"faceIndex":0,"faceName":"","traits":[],"initialLevel":1,"maxLevel":99,"name":"","nickname":"","note":"","profile":""}
 ]
