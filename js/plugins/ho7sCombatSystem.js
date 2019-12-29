@@ -238,15 +238,23 @@ Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, act
   this._windowHeight = height;
   this._actor = actor;
   Window.prototype.initialize.call(this);
-  // this.loadWindowskin();
+  this.loadWindowskin();
   this.move(x, y, width, height);
-  // this.updatePadding();
-  // this.updateBackOpacity();
-  // this.updateTone();
+  this.updatePadding();
+  this.updateBackOpacity();
+  this.updateTone();
   this.createContents();
   this._opening = false;
   this._closing = false;
   this._dimmerSprite = null;
+};
+
+Window_FP_BattleStatus.prototype.updatePadding = function () {
+  this.padding = 0;
+};
+
+Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
+  this.backOpacity = 0;
 };
 
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
