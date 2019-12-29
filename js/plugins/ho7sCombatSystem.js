@@ -125,6 +125,27 @@ Scene_Battle.prototype.updateStatusWindow = function() {
   }
 };
 
+Scene_Battle.prototype.updateWindowPositions = function() {
+  // var statusX = 0;
+  // if (BattleManager.isInputting()) {
+  //   statusX = this._partyCommandWindow.width;
+  // } else {
+  //   statusX = this._partyCommandWindow.width / 2;
+  // }
+  // if (this._statusWindow.x < statusX) {
+  //   this._statusWindow.x += 16;
+  //   if (this._statusWindow.x > statusX) {
+  //     this._statusWindow.x = statusX;
+  //   }
+  // }
+  // if (this._statusWindow.x > statusX) {
+  //   this._statusWindow.x -= 16;
+  //   if (this._statusWindow.x < statusX) {
+  //     this._statusWindow.x = statusX;
+  //   }
+  // }
+};
+
 // Window_Base override
 
 Window_Base.prototype.drawPoints = function (x, y, width, amount, max, color1, color2) {
