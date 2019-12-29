@@ -293,7 +293,7 @@ Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max, rate,
   this.drawText(value, 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
   this.drawText(max, width + slashWidth, y, width, 'left');
-  this.drawGauge(0, y + 10, this.width, rate, color, color);
+  this.drawGauge(0, y, this.width, rate, color, color);
 };
 
 Window_FP_BattleStatus.prototype.refresh = function () {
