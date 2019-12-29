@@ -245,7 +245,6 @@ Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, act
   this._opening = false;
   this._closing = false;
   this._dimmerSprite = null;
-  this.fontSize = 12;
   this.drawActorStats();
 };
 
@@ -266,6 +265,7 @@ Window_FP_BattleStatus.prototype.drawActorStats = function () {
 Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
   const slashWidth = 6;
   const width = (this._windowWidth - slashWidth) / 2;
+  this.fontSize = 8;
   this.drawText(value, 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
   this.drawText(max, width + slashWidth, y, 'left');
