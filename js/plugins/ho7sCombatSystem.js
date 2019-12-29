@@ -232,8 +232,6 @@ Window_FP_BattleStatus.prototype = Object.create(Window_Base.prototype);
 Window_FP_BattleStatus.prototype.constructor = Window_FP_BattleStatus;
 
 Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, actor) {
-  this._x = x;
-  this._y = y;
   this._windowWidth = width;
   this._windowHeight = height;
   this._actor = actor;
@@ -247,19 +245,27 @@ Window_FP_BattleStatus.prototype.initialize = function (x, y, width, height, act
   this._opening = false;
   this._closing = false;
   this._dimmerSprite = null;
+  this.fontSize = 12;
   this.drawActorStats();
 };
 
-Window_FP_BattleStatus.prototype.updatePadding = function () {
-  this.padding = 0;
-};
+// Window_FP_BattleStatus.prototype.updatePadding = function () {
+//   this.padding = 0;
+// };
 
 Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
-  this.opacity = 0;
+  this.opacity = 50;
 };
 
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
   // this.resetTextColor();
   // this.setOpacity(255);
-  this.drawText('FooBar', 0, 0, this._windowWidth, 'center');
+  this.drawParamGauge(0, this.actor.hp, 999)
+};
+
+Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max) {
+  const slashWidth = 6;
+  const width = (this._windowWidth - slashWidth) / 2;
+  this.drawText(value, 0, y, width, 'right');
+  this.drawText(max, width + slashWidth, y, 'left')
 };
