@@ -34,6 +34,7 @@ Scene_Battle.prototype.actorSpriteHeight = function () {
 };
 
 Scene_Battle.prototype.createStatusWindow = function () {
+  this._statusWindows = [];
   const spriteWidth = 80;
   const spacing = 100;
   const party = $gameParty.battleMembers();
@@ -65,7 +66,9 @@ Scene_Battle.prototype.createStatusWindow = function () {
 };
 
 Scene_Battle.prototype.createActorStatus = function (x, y, width, height, actor) {
-  const actorStatusWindow = new Window_FP_BattleStatus(x, y, width, height, actor);
+  const window = new Window_FP_BattleStatus(x, y, width, height, actor);
+  this._statusWindows.push(window);
+  this.addWindow(window);
 };
 
 Scene_Battle.prototype.createSkillWindow = function() {
@@ -124,6 +127,9 @@ Scene_Battle.prototype.stop = function() {
   } else {
     this.startFadeOut(this.fadeSpeed(), false);
   }
+  this._statusWindows.forEach(function (window) {
+    window.close();
+  });
   // this._statusWindow.close();
   this._partyCommandWindow.close();
   this._actorCommandWindow.close();
@@ -165,9 +171,6 @@ Scene_Battle.prototype.updateWindowPositions = function() {
 };
 
 Scene_Battle.prototype.startActorCommandSelection = function() {
-  // this._statusWindow.select(BattleManager.actor().index());
-  const actorIndex = BattleManager.actor().index()
-  // this._statusWindows[actorIndex].select();
   this._partyCommandWindow.close();
   this._actorCommandWindow.setup(BattleManager.actor());
 };
