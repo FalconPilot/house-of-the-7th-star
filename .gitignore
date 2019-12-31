@@ -1,18 +1,7 @@
 # Artifacts
 *.DS_Store
 
-# Pointlessly large resources
-/audio
+# Unused resources
 /movies
-
-# Graphic resources, excepting UI and stuff
-/img/animations
-/img/battlebacks1
-/img/battlebacks2
-/img/enemies
-/img/faces
-/img/parallaxes
 /img/sv_actors
 /img/sv_enemies
-/img/titles1
-/img/titles2
