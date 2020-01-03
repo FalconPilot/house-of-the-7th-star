@@ -46,9 +46,9 @@ Scene_Battle.prototype.createStatusWindow = function () {
   const spriteWidth = this.actorSpriteWidth();
   const spacing = this.actorSpriteSpacing() + this.actorSpriteWidth();
   const party = $gameParty.battleMembers();
-  console.log(party);
   const spriteY = this.actorSpriteY();
   const spriteHeight = this.actorSpriteHeight();
+
   const positions = [[
     (Graphics.boxWidth - spriteWidth) / 2
   ], [
@@ -64,6 +64,7 @@ Scene_Battle.prototype.createStatusWindow = function () {
     (Graphics.boxWidth - spriteWidth) / 2 + spacing / 2,
     (Graphics.boxWidth - spriteWidth) / 2 + spacing * 1.5
   ]];
+
   for (var i = 0; i < party.length; i++) {
     console.log('Member ' + (i + 1));
     const actor = party[i];
