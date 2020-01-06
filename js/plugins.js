@@ -6,5 +6,5 @@ var $plugins =
 {"name":"MadeWithMv","status":false,"description":"Show a Splash Screen \"Made with MV\" and/or a Custom Splash Screen before going to main screen.","parameters":{"Show Made With MV":"true","Made with MV Image":"MadeWithMv","Show Custom Splash":"false","Custom Image":"","Fade Out Time":"120","Fade In Time":"120","Wait Time":"160"}},
 {"name":"setAnimationFramerate","status":true,"description":"This plugin allows you to simply modify the in-game animations framerate.","parameters":{"FPS":"30"}},
 {"name":"hot7sStatSystem","status":true,"description":"StatMenu and system for House of the 7th Star","parameters":{}},
-{"name":"ho7sCombatSystem","status":true,"description":"Combat system for House of the 7th Star","parameters":{}}
+{"name":"hot7sCombatSystem","status":true,"description":"Combat system for House of the 7th Star","parameters":{}}
 ];

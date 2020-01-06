@@ -229,6 +229,10 @@ Window_Base.prototype.drawActorTp = function (actor, x, y, width) {
   this.drawText(actor.tp, x + width - 64, y, 64, 'right');
 };
 
+Window_Base.prototype.hpGaugeColor1 = function() {
+  return this.textColor(10);
+};
+
 // BattleManager override
 
 BattleManager.refreshStatus = function() {
@@ -284,17 +288,17 @@ Window_FP_BattleStatus.prototype.updateBackOpacity = function () {
 Window_FP_BattleStatus.prototype.drawActorStats = function () {
   // this.resetTextColor();
   // this.setOpacity(255);
-  this.drawParamGauge(0, this._actor.hp, this._actor.mhp, this._actor.hpRate(), this.hpGaugeColor1());
+  this.drawParamGauge(0, this._actor.hp, this._actor.mhp, this._actor.hpRate(), this.hpGaugeColor1(), this.hpGaugeColor2());
 };
 
-Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max, rate, color) {
+Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max, rate, color1, color2) {
   const slashWidth = 6;
   const width = (this.width - slashWidth) / 2;
   this.contents.fontSize = 12;
   this.drawText(value, 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
   this.drawText(max, width + slashWidth, y, width, 'left');
-  this.drawGauge(0, y, this.width, rate, color, color);
+  this.drawGauge(0, y, this.width, rate, color1, color2);
 };
 
 Window_FP_BattleStatus.prototype.refresh = function () {
