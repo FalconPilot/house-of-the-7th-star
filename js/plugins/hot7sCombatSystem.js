@@ -9,7 +9,7 @@ Game_BattlerBase.prototype.maxTp = function () {
   return 3;
 };
 
-// Game Battler ovderride
+// Game Battler override
 
 Game_Battler.prototype.regenerateTp = function () {
   const value = 1;
@@ -21,6 +21,14 @@ Game_Battler.prototype.initTp = function () {
 };
 
 Game_Battler.prototype.chargeTpByDamage = function () {
+};
+
+// Game Actor override
+
+Game_Actor.prototype.wdmg = function() {
+  return this.weapons().reduce(function (dmg, weapon) {
+    return dmg + 0;
+  }, 0);
 };
 
 // Scene_Battle override
@@ -239,7 +247,8 @@ Window_Base.prototype.gaugeBorderColor = function () {
 
 Window_Base.prototype.drawBorderedGauge = function (x, y, width, rate, color1, color2) {
   const gaugeY = y + this.lineHeight() - 8;
-  this.contents.fillRect(x - 1, gaugeY - 1, width + 2, 8, this.gaugeBackColor());
+  this.contents.fillRect(x, gaugeY - 1, width + 2, 8, this.gaugeBackColor());
+  this.drawGauge(x + 1, y, width - 2, rate, color1, color2);
 };
 
 // BattleManager override
@@ -307,7 +316,7 @@ Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max, rate,
   this.drawText(value, 0, y, width, 'right');
   this.drawText('/', width, y, slashWidth, 'center');
   this.drawText(max, width + slashWidth, y, width, 'left');
-  this.drawGauge(0, y, this.width, rate, color1, color2);
+  this.drawBorderedGauge(0, y, this.width, rate, color1, color2);
 };
 
 Window_FP_BattleStatus.prototype.drawPoints = function (y, value, max, color) {
