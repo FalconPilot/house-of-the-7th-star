@@ -233,6 +233,15 @@ Window_Base.prototype.hpGaugeColor1 = function() {
   return this.textColor(10);
 };
 
+Window_Base.prototype.gaugeBorderColor = function () {
+  return this.textColor();
+};
+
+Window_Base.prototype.drawBorderedGauge = function (x, y, width, rate, color1, color2) {
+  const gaugeY = y + this.lineHeight() - 8;
+  this.contents.fillRect(x - 1, gaugeY - 1, width + 2, 8, this.gaugeBackColor());
+};
+
 // BattleManager override
 
 BattleManager.refreshStatus = function() {
@@ -301,9 +310,13 @@ Window_FP_BattleStatus.prototype.drawParamGauge = function (y, value, max, rate,
   this.drawGauge(0, y, this.width, rate, color1, color2);
 };
 
+Window_FP_BattleStatus.prototype.drawPoints = function (y, value, max, color) {
+  this.spacing = 4;
+  this.draw
+}
+
 Window_FP_BattleStatus.prototype.refresh = function () {
   this.contents.clear();
   this.createContents();
   this.drawActorStats();
-
 };
