@@ -4,6 +4,6 @@ null,
 {"id":2,"expanded":false,"name":"Draconis_Throne","order":4,"parentId":3,"scrollX":571,"scrollY":391},
 {"id":3,"expanded":true,"name":"Draconis_Stronghold","order":3,"parentId":0,"scrollX":579,"scrollY":391},
 {"id":4,"expanded":false,"name":"Draconis_Recruitroom","order":6,"parentId":5,"scrollX":579,"scrollY":391},
-{"id":5,"expanded":true,"name":"Draconis_Corridor_West","order":5,"parentId":3,"scrollX":832,"scrollY":640},
+{"id":5,"expanded":true,"name":"Draconis_Corridor_West","order":5,"parentId":3,"scrollX":579,"scrollY":391},
 {"id":6,"expanded":false,"name":"Intro_campfire","order":2,"parentId":1,"scrollX":579,"scrollY":391}
 ]
